@@ -1,4 +1,4 @@
-# collapse each of the 3 race variables
+# define race/ethnicity
 collapse_race<-function(vv){
   cc<-readxl::read_excel('E:/mappings/CCDF_Dynamic_Data Dictionary.xlsx',
                          sheet=6,skip=1)
@@ -17,8 +17,6 @@ collapse_race<-function(vv){
 ii$race.1<-collapse_race(ii$race.1.code.final)
 ii$race.2<-collapse_race(ii$race.2.code.final)
 ii$race.3<-collapse_race(ii$race.3.code.final)
-
-# define race/ethnicity
 ii$mixed<-apply(ii[,paste('race',1:3,sep='.')],1,
                 function(rr){ length(unique(rr[!is.na(rr)])) })
 ii$re<-ifelse(ii$mixed>1,'Mixed',ii$race.1)
