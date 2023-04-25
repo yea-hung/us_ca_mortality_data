@@ -1,6 +1,6 @@
 # define race/ethnicity
 collapse_race<-function(vv){
-  cc<-readxl::read_excel('E:/mappings/CCDF_Dynamic_Data Dictionary.xlsx',
+  cc<-readxl::read_excel('CCDF_Dynamic_Data Dictionary.xlsx',
                          sheet=6,skip=1)
   cc<-as.data.frame(cc)
   vv<-factor(vv,cc$Race_Code,cc$Race_Description)
